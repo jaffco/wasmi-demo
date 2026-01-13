@@ -34,6 +34,19 @@ then
 fi
 echo -e "${GREEN}Built ${YELLOW}libDaisy${NC}!${NC}"
 
+# Build wasmi-daisy
+cd ../wasmi-daisy
+echo -e "${BLUE}Building ${YELLOW}wasmi-daisy${NC}${BLUE}${NC}..."
+./build.sh
+if [ $? -ne 0 ]
+then
+    echo -e "${RED}Failed to compile ${YELLOW}wasmi-daisy${NC}.${NC}"
+    echo -e "${YELLOW}Have you installed Rust and Cargo?${NC}"
+    echo -e "${YELLOW}See README.md${NC}"
+    exit 1
+fi
+echo -e "${GREEN}Built ${YELLOW}wasmi-daisy${NC}!${NC}"
+
 # We made it!
 echo -e "${GREEN}Init Complete!${NC}"
 echo -e "${YELLOW}Use ${CYAN}${BOLD}./run.sh${NC}${YELLOW} to build and flash programs${NC}"
