@@ -34,7 +34,7 @@ echo "WASM module size: $(wc -c < build/module.wasm) bytes"
 
 # Convert WASM binary to C header array
 echo "Embedding WASM in C header..."
-xxd -i build/module.wasm > build/module_wasm.h
+xxd -i -n module.wasm build/module.wasm > build/module_wasm.h
 
 echo ""
 echo "================================"

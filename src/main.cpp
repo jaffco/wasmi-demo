@@ -98,8 +98,8 @@ bool InitWasmi() {
 
   // Load module
   hardware.PrintLine("[INIT] Loading WebAssembly module...");
-  hardware.PrintLine("[INFO] Module size: %d bytes", build_module_wasm_len);
-  module = wasmi_module_new(engine, build_module_wasm, build_module_wasm_len);
+  hardware.PrintLine("[INFO] Module size: %d bytes", module_wasm_len);
+  module = wasmi_module_new(engine, module_wasm, module_wasm_len);
   if (!module) {
     hardware.PrintLine("[ERROR] Failed to load module!");
     wasmi_store_delete(store);
