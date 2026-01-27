@@ -24,7 +24,7 @@ emcc \
     -O2 \
     -sSTANDALONE_WASM \
     -sEXPORTED_RUNTIME_METHODS=[] \
-    -sEXPORTED_FUNCTIONS=_add \
+    -sEXPORTED_FUNCTIONS=_process \
     -sERROR_ON_UNDEFINED_SYMBOLS=0 \
     --no-entry \
     -o build/module.wasm \
