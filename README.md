@@ -18,7 +18,7 @@
 
 4. With your device in program mode, use `run.sh` (or `SHIFT+CMD+B` in VSCode) to build and flash to the Daisy.
 
-5. To run `emcc` compiled Wasm, use `build-wasm.sh`. This will compile `add.cpp` and dump the Wasm into a buffer in `add_wasm.h`. <br> In `wasmiTest.cpp`, add a `#include` for `add_wasm.h`, and then replace the three instances of `wasm_add` with `add_wasm`. You can then use `run.sh` to build && flash. 
+5. To build the WebAssembly module, run `wasm-module/build-wasm.sh`. This compiles `wasm-module/module.cpp` to WebAssembly and generates `wasm-module/build/module_wasm.h` with the embedded bytecode. 
 
 > [!NOTE]
 > When developing for the Daisy, it is often useful to use serial monitoring for testing and debugging. If developing in VSCode, we recommend installing Microsoft's [serial monitor extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor), which will add easy access to serial monitoring via the terminal panel.

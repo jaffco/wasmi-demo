@@ -1,5 +1,6 @@
 #include "../libDaisy/src/daisy_seed.h"
 #include "../wasmi-daisy/wasmi_daisy.h"
+#include "../wasm-module/build/module_wasm.h"
 #include "SDRAM.hpp"
 
 using namespace daisy;
@@ -18,19 +19,7 @@ extern "C" {
 }
 
 // WebAssembly module that adds two numbers
-// (module
-//   (func (export "add") (param i32 i32) (result i32)
-//     local.get 0
-//     local.get 1
-//     i32.add))
-static const uint8_t wasm_add[] = {
-  0x00, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00,
-  0x01, 0x07, 0x01, 0x60, 0x02, 0x7f, 0x7f, 0x01,
-  0x7f, 0x03, 0x02, 0x01, 0x00, 0x07, 0x07, 0x01,
-  0x03, 0x61, 0x64, 0x64, 0x00, 0x00, 0x0a, 0x09,
-  0x01, 0x07, 0x00, 0x20, 0x00, 0x20, 0x01, 0x6a,
-  0x0b
-};
+// Generated from wasm-module/module.cpp
 
 class Timer {
 private:
@@ -114,8 +103,8 @@ int main() {
 
   // Load module
   hardware.PrintLine("[INIT] Loading WebAssembly module...");
-  hardware.PrintLine("[INFO] Module size: %d bytes", sizeof(wasm_add));
-  module = wasmi_module_new(engine, wasm_add, sizeof(wasm_add));
+  hardware.PrintLine("[INFO] Module size: %d bytes", build_module_wasm_len);
+  module = wasmi_module_new(engine, build_module_wasm, build_module_wasm_len);
   if (!module) {
     hardware.PrintLine("[ERROR] Failed to load module!");
     wasmi_store_delete(store);

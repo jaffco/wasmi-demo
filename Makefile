@@ -2,7 +2,7 @@
 TARGET = wasmi-demo
 
 # Sources
-CPP_SOURCES = src/wasmi-demo.cpp
+CPP_SOURCES = src/main.cpp
 
 # wasmi-daisy integration
 WASMI_DAISY_PATH = ./wasmi-daisy
