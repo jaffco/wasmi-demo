@@ -4,3 +4,6 @@
 [submodule "wasmi-daisy"]
 	path = wasmi-daisy
 	url = https://github.com/jaffco/wasmi-daisy
+[submodule "wasm-module/Phhhsrrr"]
+	path = wasm-module/Phhhsrrr
+	url = https://github.com/jaffco/Phhhsrrr
