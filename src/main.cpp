@@ -101,7 +101,9 @@ bool InitWasmi() {
   hardware.PrintLine("[INFO] Module size: %d bytes", module_wasm_len);
   module = wasmi_module_new(engine, module_wasm, module_wasm_len);
   if (!module) {
+    const char* err = wasmi_get_last_error();
     hardware.PrintLine("[ERROR] Failed to load module!");
+    if (err) hardware.PrintLine("[ERROR] %s", err);
     wasmi_store_delete(store);
     wasmi_engine_delete(engine);
     store = nullptr;
@@ -114,7 +116,9 @@ bool InitWasmi() {
   hardware.PrintLine("[INIT] Instantiating module...");
   instance = wasmi_instance_new(store, module);
   if (!instance) {
+    const char* err = wasmi_get_last_error();
     hardware.PrintLine("[ERROR] Failed to instantiate module!");
+    if (err) hardware.PrintLine("[ERROR] %s", err);
     wasmi_module_delete(module);
     wasmi_store_delete(store);
     wasmi_engine_delete(engine);
